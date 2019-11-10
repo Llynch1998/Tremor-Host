@@ -2,6 +2,9 @@
     "name": "tremor",
     "version": "0.0.1",
     "description": "RealTimeChatApp",
+    "scripts": {
+        "start": "node index.js"
+      },
     "dependencies": {
         "express": "^4.15.2",
         "socket.io": "^2.3.0"
