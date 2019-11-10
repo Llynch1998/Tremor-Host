@@ -3,7 +3,8 @@
     "version": "0.0.1",
     "description": "RealTimeChatApp",
     "scripts": {
-        "start": "node index.js"
+        "start": "node index.js",
+        "test": "echo \"Tests complete\""
     },
     "dependencies": {
         "express": "^4.15.2",
