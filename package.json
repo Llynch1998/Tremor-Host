@@ -4,9 +4,10 @@
     "description": "RealTimeChatApp",
     "scripts": {
         "start": "node index.js"
-      },
+    },
     "dependencies": {
         "express": "^4.15.2",
+        "is-electron": "^2.2.0",
         "socket.io": "^2.3.0"
     }
 }
