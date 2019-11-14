@@ -10,10 +10,6 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const url = require('url');
 const csrf = require('csurf');
-const app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
@@ -39,7 +35,7 @@ if(process.env.REDISCLOUD_URL){
 
 const router = require('./router.js');
 
-//const app = express();
+const app = express();
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted`)));
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.disable('x-powered-by');
@@ -71,24 +67,7 @@ app.use((err, req, res, next) =>{
 })
 router(app);
 
-
-
-
-
-io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('disconnect', function(){
-      console.log('user disconnected');
-    });
-});
-
-io.on('connection', function(socket){
-    socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
-    });
-})
-
-http.listen(port, (err) =>{
+app.listen(port, (err) =>{
     if(err){
         throw err;
     }
