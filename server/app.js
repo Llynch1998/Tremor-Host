@@ -69,9 +69,27 @@ app.use((err, req, res, next) =>{
 })
 router(app);
 
-app.listen(port, (err) =>{
-    if(err){
-        throw err;
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+  });
+  
+  io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+      io.emit('chat message', msg);
+      console.log(`message: ${msg}`);
+    });
+  });
+  
+
+http.listen(port, (err) => {
+    if (err) {
+      throw err;
     }
     console.log(`Listening on port ${port}`);
-});
+  });
+  
+  
+  module.exports.io = io;
