@@ -10,7 +10,8 @@ const handleText = (e) =>{
 
 const chat= () => {
   socket.on ('chat message', (msg) => {
-    $('#messages').append($('<li>').text(msg));
+    let message = $('#messages');
+    message.append($('<li>').text(msg));
     window.scrollTo(0,document.body.scrollHeight);
   });
 }
