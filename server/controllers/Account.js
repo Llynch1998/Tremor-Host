@@ -6,7 +6,7 @@ const loginPage = (req,res) =>{
 };
 
 const chatPage = (req,res) =>{
-    res.render('chat');
+    res.render('chat', {username: req.session.account.username});
 }
 
 const logout = (req,res) =>{

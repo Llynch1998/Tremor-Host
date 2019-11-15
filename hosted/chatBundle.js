@@ -1,5 +1,5 @@
 const socket = io();
-let username = "";
+
 const handleText = e => {
   e.preventDefault(); // prevents page reloading
   socket.emit('chat message', $('#m').val());
@@ -9,9 +9,11 @@ const handleText = e => {
 };
 
 const chat = () => {
-  socket.on('chat message', msg => {
+  socket.on('chat message', (msg, username) => {
     let message = $('#messages');
-    message.append($('<li>').text(username));
+    let userDiv = $(`<div><p class="usernameStyle">${$('#username').val()}</p></div>`);
+    let messageDiv = $(`<p class="messageStyle">${msg}</p>`);
+    message.append($('<li>').append(userDiv).append(messageDiv));
     window.scrollTo(0, document.body.scrollHeight);
   });
 };
@@ -30,12 +32,6 @@ const ChatForm = props => {
   );
 };
 
-const loadUserFromServer = () => {
-  sendAjax('GET', '/getUser', null, data => {
-    username = data.username;
-    console.log('username : ' + username);
-  });
-};
 const setup = function (csrf) {
   ReactDOM.render(React.createElement(ChatForm, { csrf: csrf }), document.querySelector('#sender'));
 };
@@ -47,7 +43,6 @@ const getToken = () => {
 };
 
 $(document).ready(function () {
-  loadUserFromServer();
   chat();
   getToken();
 });

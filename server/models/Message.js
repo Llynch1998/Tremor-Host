@@ -7,7 +7,6 @@ let messageModel = {};
 
 const convertId = mongoose.Types.ObjectId;
 
-
 const MessageSchema = new mongoose.Schema({
     message: String,
     owner: {
@@ -17,6 +16,10 @@ const MessageSchema = new mongoose.Schema({
     },
     reciever: String
 });
+
+let chatLog = mongoose.model('Message', MessageSchema);
+
+
 
 MessageSchema.toAPI = (doc) =>({
     message: doc.message,
