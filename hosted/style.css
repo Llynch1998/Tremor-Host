@@ -1,14 +1,67 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* end css reset*/
+
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: auto;
+    background: #121212;
+    font-family: 'Roboto Mono', monospace; 
 }
 
 #logo {
     height: 40px;
-    width: 40;
+    width: 40px;
     padding-top: 5px;
     float:left;
     border-radius: 8px;
@@ -16,8 +69,8 @@ html, body {
 
 nav {
     width: 100%;
-    height: 50px;
-    background-color: #55acee;
+    height: 5vh;
+    background-color: #A0A0A0;
 }
 
 nav:nth-child(1) {
@@ -28,23 +81,122 @@ nav:nth-child(1) {
     padding: 5px;
     padding-top: 12px;
     padding-left: 20px;
-    color: white;
+    color: #000000;
     font-size: 1.3em;
     float: left;
+    background-color: #A0A0A0;
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
+    color: #000000;
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #A0A0A0;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #4B4B4B;
+}
+
+/* Chat Page */
+
+#chatStuff{
+    height: 95vh;
+    width: 100vw;
+    flex-direction: row;
+    display: flex;
+    overflow-y: scroll;
+    background: #121212;
+}
+
+#peopleInChat{
+    overflow-y: auto;
+    background: #121212;
+    width: 15%;
+}
+
+#messageContainer{
+    width: 85%;
+    background: #4B4B4B;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#messages { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+    background: #4B4B4B;
+    overflow-y: auto;
+    height: calc(100%-100px);
+}
+
+.usernameStyle{
+    font-weight: bold; 
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.messageContentStyle{
+    margin-left: 10px;
+}
+
+.messageStyle{
+    color: #D6D6D6;
+    font-size: 1em;
+    margin: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3D314A;
+}
+
+#sender{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+
+form {  
+    width: 100%;
+    height: 50px;
+}
+
+#m{
+    background-color: #8B8B8B;
+    width: 89%;
+    border: 10px solid #3D314A;
+    margin-right: 1%;
+    height: 100%;
+    font-size: 1.2em;
+}
+
+.buttonSend {
+    width: 10%;
+    background: #5C3968;
+    color: #1EC302;
+    border: none;
+    height: 100%;
+    font-size: 1.2em;
+}
+
+#users{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#people{
+    background: #4B4B4B;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 10px;
+    border-radius: 3px;
 }
 
 .domoForm {
