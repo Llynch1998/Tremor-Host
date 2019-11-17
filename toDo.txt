@@ -3,3 +3,6 @@
 -users currently in lobby displayed next to chat
 -change password page
 -make look really pretty
+-fix .circlci stuff
+-remove all domo references
+-documentation
