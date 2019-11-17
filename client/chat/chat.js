@@ -40,6 +40,7 @@ const setup = function(csrf) {
   ReactDOM.render(
       <ChatForm csrf={csrf}/>, document.querySelector('#sender')
   );
+ 
 };
 
 const getToken = () => {

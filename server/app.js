@@ -69,7 +69,7 @@ app.use((err, req, res, next) =>{
 });
 
 router(app);
-app.use(function(req, res, next){
+app.use(function(req, res){
   res.status(404).render('404Page');
 });
 
