@@ -12,6 +12,7 @@ const url = require('url');
 const csrf = require('csurf');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const app = express();
+// eslint-disable-next-line new-cap
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
