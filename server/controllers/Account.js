@@ -9,6 +9,10 @@ const chatPage = (req,res) =>{
     res.render('chat', {username: req.session.account.username});
 }
 
+const error = (req,res) =>{
+    res.render('404page');
+}
+
 const logout = (req,res) =>{
     req.session.destroy();
     res.redirect('/');
@@ -94,3 +98,4 @@ module.exports.logout = logout;
 module.exports.getToken = getToken;
 module.exports.signup = signup;
 module.exports.chatPage = chatPage;
+module.exports.errorPage = error;
