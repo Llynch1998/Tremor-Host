@@ -10,10 +10,13 @@ const handleText = e => {
 
 const chat = () => {
   socket.on('chat message', (msg, username) => {
-    let message = $('#messages');
-    let userDiv = $(`<div><p class="usernameStyle">${$('#username').val()}</p></div>`);
-    let messageDiv = $(`<p class="messageStyle">${msg}</p>`);
-    message.append($('<li>').append(userDiv).append(messageDiv));
+    let messages = $('#messages');
+    let messageDiv = $('<div class="messageStyle"></div>');
+    let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
+    let messageContent = $(`<p class="messageContentStyle">${msg}</p>`);
+    messageDiv.append(userDiv);
+    messageDiv.append(messageContent);
+    messages.append($('<li>').append(messageDiv));
     window.scrollTo(0, document.body.scrollHeight);
   });
 };
