@@ -66,8 +66,12 @@ app.use((err, req, res, next) =>{
     if(err.code !== 'EBADCSRFTOKEN') return next(err);
     console.log('Missing CSRF token');
     return false;
-})
+});
+
 router(app);
+app.use(function(req, res, next){
+  res.status(404).render('404Page');
+});
 
 io.on('connection', (socket) => {
     console.log('a user connected');

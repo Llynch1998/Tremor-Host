@@ -1,0 +1,5 @@
+-account page where user can change account information
+-404 page
+-users currently in lobby displayed next to chat
+-change password page
+-make look really pretty
