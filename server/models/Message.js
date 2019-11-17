@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const _ = require('underscore');
+//const _ = require('underscore');
 
 
-let messageModel = {};
+//let messageModel = {};
 
-const convertId = mongoose.Types.ObjectId;
+//const convertId = mongoose.Types.ObjectId;
 
 const MessageSchema = new mongoose.Schema({
     message: String,
@@ -17,7 +17,7 @@ const MessageSchema = new mongoose.Schema({
     reciever: String
 });
 
-let chatLog = mongoose.model('Message', MessageSchema);
+//let chatLog = mongoose.model('Message', MessageSchema);
 
 
 
