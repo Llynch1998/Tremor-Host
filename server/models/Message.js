@@ -13,8 +13,7 @@ const MessageSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required: true,
         ref: 'Account',
-    },
-    reciever: String
+    }
 });
 
 //let chatLog = mongoose.model('Message', MessageSchema);
@@ -23,5 +22,9 @@ const MessageSchema = new mongoose.Schema({
 
 MessageSchema.toAPI = (doc) =>({
     message: doc.message,
-    reciever: doc.reciever
 });
+
+MessageModel = mongoose.model('Message', MessageSchema);
+
+module.exports.MessageModel = MessageModel;
+module.exports.MessageSchema = MessageSchema;
