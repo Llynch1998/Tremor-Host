@@ -21,3 +21,21 @@ const saveMessage = (request, response) =>{
     }
     return messagePromise;
 }
+
+
+const loadMessages = (request, response) =>{
+    const req = request;
+    const res = response;
+
+    return Message.MessageModel.returnAll(req.sessions.account._id, (err,docs)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json({error: 'An error ocurred'});
+
+        }
+        return res.json({messages:docs});
+    })
+}
+
+module.exports.saveMessage = saveMessage;
+module.exports.loadMessages = loadMessages;

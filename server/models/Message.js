@@ -24,6 +24,10 @@ MessageSchema.statics.toAPI = (doc) =>({
     
 });
 
+MessageSchema.statics.returnAll = (callback) =>{
+    return this.MessageModel.find().select('message').exec(callback);
+}
+
 MessageModel = mongoose.model('Message', MessageSchema);
 
 module.exports.MessageModel = MessageModel;

@@ -5,6 +5,7 @@ const handleText = (e) =>{
   socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
   $('#m').val('');
 
+
   return false;
 }
 
@@ -44,7 +45,7 @@ const ChatForm = (props) => {
       <form id='messageForm'
       onSubmit={handleText}
       name='messageForm'
-      action=''
+      action='/saveMessage'
       method='POST'>
           <input id="m" type='text' autocomplete="off" />
           <input type='hidden' name='_csrf' value={props.csrf} />
@@ -70,5 +71,16 @@ const getToken = () => {
 $(document).ready(function() {
   chat();
   getToken();
+  sendAjax('Get', '/loadMessages', null, (result) =>{
+    for(let i = 0; i < result.length; i++){
+      let messages = $('#messages');
+      let messageDiv = $('<div class="messageStyle"></div>');
+      //let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
+      let messageContent = $(`<p class="messageContentStyle">${result[i]}</p>`);
+      //messageDiv.append(userDiv);
+      messageDiv.append(messageContent)
+      messages.append($('<li>').append(messageDiv));
+    }
+  });
   socket.emit('joined', $("#username").val())
 });
