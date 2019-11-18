@@ -111,7 +111,7 @@ const createSignupWindow = (csrf) =>{
     );
 }
 
-const createSignupWindow = (csrf) => {
+const createChangePasswordWindow = (csrf) => {
     ReactDOM.render(
         <ChangePasswordWindow csrf={csrf} />,
         document.querySelector("#content")
