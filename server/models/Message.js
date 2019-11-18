@@ -18,11 +18,14 @@ const MessageSchema = new mongoose.Schema({
 //let chatLog = mongoose.model('Message', MessageSchema);
 
 
-// eslint-disable-next-line new-cap
-MessageSchema.statics.toAPI = (doc) =>({message: doc.message});
 
-// eslint-disable-next-line new-cap
-MessageSchema.statics.returnAll = (callback) =>{return this.MessageModel.find().select('message').exec(callback);};
+MessageSchema.statics.toAPI = (doc) =>({
+    message: doc.message,
+});
+
+MessageSchema.statics.returnAll = (callback) =>{
+    return this.MessageModel.find().select('message').exec(callback);
+}
 
 MessageModel = mongoose.model('Message', MessageSchema);
 
