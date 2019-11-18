@@ -78,7 +78,7 @@ app.use(function(req, res){
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-    socket.on('disconnect', (data) => {
+    socket.on('disconnect', () => {
       console.log('user disconnected');
       
     });
