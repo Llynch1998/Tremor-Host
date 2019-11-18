@@ -45,13 +45,13 @@ const LoginWindow = props => {
         React.createElement(
             "label",
             { htmlFor: "username" },
-            "Username: "
+            "Username "
         ),
         React.createElement("input", { id: "user", type: "text", name: "username", placeholder: "username" }),
         React.createElement(
             "label",
             { htmlFor: "pass" },
-            "Password: "
+            "Password "
         ),
         React.createElement("input", { id: "pass", type: "password", name: "pass", placeholder: "password" }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
@@ -71,23 +71,55 @@ const SignupWindow = props => {
         React.createElement(
             "label",
             { htmlFor: "username" },
-            "Username: "
+            "Username "
         ),
         React.createElement("input", { id: "user", type: "text", name: "username", placeholder: "username" }),
         React.createElement(
             "label",
             { htmlFor: "pass" },
-            "Password: "
+            "Password "
         ),
         React.createElement("input", { id: "pass", type: "password", name: "pass", placeholder: "password" }),
         React.createElement(
             "label",
             { htmlFor: "pass2" },
-            "Password: "
+            "Password "
         ),
         React.createElement("input", { id: "pass2", type: "password", name: "pass2", placeholder: "retype password" }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
         React.createElement("input", { className: "formSubmit", type: "submit", value: "Sign in" })
+    );
+};
+
+const ChangePasswordWindow = props => {
+    return React.createElement(
+        "form",
+        { id: "changePasswordForm", name: "changePasswordForm",
+            onSubmit: handleSignup,
+            action: "/passwordChange",
+            method: "POST",
+            className: "mainForm"
+        },
+        React.createElement(
+            "label",
+            { htmlFor: "oldPassword" },
+            "Old Password "
+        ),
+        React.createElement("input", { id: "oldPass", type: "text", name: "oldPassword", placeholder: "current password" }),
+        React.createElement(
+            "label",
+            { htmlFor: "newPass" },
+            "Password "
+        ),
+        React.createElement("input", { id: "newPass", type: "password", name: "newPass", placeholder: "password" }),
+        React.createElement(
+            "label",
+            { htmlFor: "newPass2" },
+            "Password "
+        ),
+        React.createElement("input", { id: "newPass2", type: "password", name: "newPass2", placeholder: "retype password" }),
+        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { className: "formSubmit", type: "submit", value: "Change Password" })
     );
 };
 
@@ -99,9 +131,14 @@ const createSignupWindow = csrf => {
     ReactDOM.render(React.createElement(SignupWindow, { csrf: csrf }), document.querySelector("#content"));
 };
 
+const createChangePasswordWindow = csrf =>{
+    ReactDOM.render(React.createElement(SignupWindow, { csrf: csrf }), document.querySelector("#content"));
+};
+
 const setup = csrf => {
     const loginButton = document.querySelector("#loginButton");
     const signupButton = document.querySelector("#signupButton");
+    const changePasswordButton = document.querySelector("#changePasswordButton");
 
     signupButton.addEventListener("click", e => {
         e.preventDefault();
@@ -114,6 +151,12 @@ const setup = csrf => {
         createLoginWindow(csrf);
         return false;
     });
+
+    changePasswordButton.addEventListener("click", e => {
+        e.preventDefault();
+        createChangePasswordWindow(csrf);
+        return false;
+    })
 
     createLoginWindow(csrf);
 };

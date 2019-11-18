@@ -77,9 +77,27 @@ const signup = (request, response) =>{
             return res.status(400).json({error: 'An error occurred'});
         })
     });
+};
 
-   
+const passwordChange = (request, response) => {
+    const req = request;
+    const res = response;
 
+    req.body.oldPass = `${req.body.oldPass}`;
+    req.body.newPass = `${req.body.newPass}`;
+    req.body.newPass2 = `${req.body.newPass2}`;
+
+    if(!req.body.oldPass || !req.body.newPass || !req.body.newPass2){
+        return res.status(400).json({error: 'All fields are required'});
+    }
+
+    if(req.body.newPass !== req.body.newPass2){
+        return res.status(400).json({error: 'Passwords do not match'});
+    }
+
+    return Account.AccountModel.generateHash(req.body.newPass, (salt, hash) =>{
+        
+    });
 };
 
 const getToken = (request, response) =>{
@@ -99,3 +117,4 @@ module.exports.getToken = getToken;
 module.exports.signup = signup;
 module.exports.chatPage = chatPage;
 module.exports.errorPage = error;
+module.exports.passChange = passwordChange;
