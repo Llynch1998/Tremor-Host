@@ -107,7 +107,7 @@ const passwordChange = (request, response) => {
           username: req.session.account.username,
         };
 
-        Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, {}, (error) => {
+        Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, {}, () => {
           if (error) {
             return res.status(500).json({ error: 'The password cannot be updated' });
           }
