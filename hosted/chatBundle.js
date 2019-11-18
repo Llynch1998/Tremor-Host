@@ -23,6 +23,7 @@ const chat = () => {
 
   socket.on('joined', name => {
     console.log('we in like flin');
+    socket.name = name;
   });
   socket.on('userAdded', data => {
 
@@ -30,6 +31,12 @@ const chat = () => {
       let people = $('#users');
       people.append(`<li id="people">${data[i]}</li>`);
     }
+  });
+
+  socket.on('leaving', empty => {
+    console.log('left');
+    socket.emit('left', name);
+    $('#users').html("");
   });
 };
 
