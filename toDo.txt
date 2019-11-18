@@ -2,7 +2,7 @@
 -users currently in lobby displayed next to chat // --1--
 -change password page // --3--
 -make look really pretty \\
--remove all domo references
+-remove all domo references \\ DONE
 -documentation \\ DONE
 -save chat logs to db // --1--
 -load chat logs from db // --1--
