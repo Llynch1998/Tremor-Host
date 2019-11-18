@@ -21,6 +21,7 @@ const MessageSchema = new mongoose.Schema({
 // eslint-disable-next-line new-cap
 MessageSchema.statics.toAPI = (doc) =>({message: doc.message});
 
+// eslint-disable-next-line new-cap
 MessageSchema.statics.returnAll = (callback) =>{
     return this.MessageModel.find().select('message').exec(callback);
 }
