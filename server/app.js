@@ -80,11 +80,11 @@ io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', (data) => {
       console.log('user disconnected');
-      socket.emit('leaving',"left");
+      
     });
     socket.on('left', (name) =>{
       currentUsers.splice(currentUsers.indexOf(name), 1);
-      io.sockets.emit('userAdded', currentUsers);
+      io.emit('userAdded', currentUsers);
     });
   });
   

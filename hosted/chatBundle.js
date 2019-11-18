@@ -2,29 +2,25 @@ const socket = io();
 
 const handleText = e => {
   e.preventDefault(); // prevents page reloading
-  socket.emit('chat message', $('#m').val());
+  socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
   $('#m').val('');
 
   return false;
 };
 
 const chat = () => {
-  socket.on('chat message', (msg, username) => {
+  socket.on('chat message', msg => {
     let messages = $('#messages');
     let messageDiv = $('<div class="messageStyle"></div>');
-    let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
+    //let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
     let messageContent = $(`<p class="messageContentStyle">${msg}</p>`);
-    messageDiv.append(userDiv);
+    //messageDiv.append(userDiv);
     messageDiv.append(messageContent);
     messages.append($('<li>').append(messageDiv));
     $('#messages').scrollTop = $('#messages').scrollHeight - $('#messages').clientHeight;
     //window.scrollTo(0,$('#messages').scrollHeight);
   });
 
-  socket.on('joined', name => {
-    console.log('we in like flin');
-    socket.name = name;
-  });
   socket.on('userAdded', data => {
 
     for (let i = 0; i < data.length; i++) {
