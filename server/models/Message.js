@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 //const _ = require('underscore');
 
 
-let messageModel = {};
+let MessageModel = {};
 
 //const convertId = mongoose.Types.ObjectId;
 
