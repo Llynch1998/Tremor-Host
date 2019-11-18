@@ -23,9 +23,10 @@ const chat = () => {
   });
 
   socket.on('userAdded', data => {
-
+    let people = $('#users');
+    people.empty();
     for (let i = 0; i < data.length; i++) {
-      let people = $('#users');
+
       people.append(`<li id="people">${data[i]}</li>`);
     }
   });
