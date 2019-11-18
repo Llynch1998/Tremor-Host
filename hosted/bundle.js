@@ -32,18 +32,28 @@ const AccountInfo = props => {
         "div",
         { id: "accountInfo" },
         React.createElement(
-            "label",
-            { htmlFor: "username", id: "usernameLabel" },
-            "Username: ",
+            "p",
+            { id: "usernameLabel" },
+            React.createElement(
+                "strong",
+                null,
+                "Username:"
+            ),
+            " ",
             props.username
         ),
         React.createElement(
-            "label",
-            { htmlFor: "password" },
-            "Password: "
+            "p",
+            { id: "passwordLabel" },
+            React.createElement(
+                "strong",
+                null,
+                "Password:"
+            ),
+            " ",
+            React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
         ),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
+        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf })
     );
 };
 

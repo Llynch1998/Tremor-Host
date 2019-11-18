@@ -302,4 +302,28 @@ form {
     width: 80vw;
     margin: 0 auto;
     background: #4B4B4B;
+    display: flex;
+    flex-direction: column;
+}
+
+#changePasswordButton {
+    background: #5C3968;
+    color: #1EC302;
+    border: none;
+    height: 5%;
+    font-size: 1em;
+}
+
+#accountInfo{
+    font-size: 1.3em;
+    color: black;
+}
+
+#accountInfoShrink{
+    width: 100%;
+}
+
+#usernameLabel, #passwordLabel {
+    margin: 30px;
+    font-size: 1.2em;
 }
