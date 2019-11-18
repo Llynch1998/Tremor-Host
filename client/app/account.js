@@ -32,6 +32,7 @@ const AccountInfo = (props) => {
         <div id="accountInfo">
             <label htmlFor="username">Username: </label>
             <label htmlFor="password">Password: </label>
+            <input type="hidden" name="_csrf" value={props.csrf}/>
             <input id="changePasswordButton" type="submit" value="Change Password" />
         </div>
     );
@@ -43,3 +44,13 @@ const setup = function(csrf){
     );
         
 };
+
+const getToken = () => {
+    sendAjax('GET', '/getToken', null, (result) => {
+        setup(result.csrfToken);
+    });
+};
+
+$(document).ready(function() {
+    getToken();
+});

@@ -41,6 +41,7 @@ const AccountInfo = props => {
             { htmlFor: "password" },
             "Password: "
         ),
+        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
         React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
     );
 };
@@ -48,6 +49,16 @@ const AccountInfo = props => {
 const setup = function (csrf) {
     ReactDom.render(React.createElement(AccountInfo, { csrf: csrf }), document.querySelector('#account'));
 };
+
+const getToken = () => {
+    sendAjax('GET', '/getToken', null, result => {
+        setup(result.csrfToken);
+    });
+};
+
+$(document).ready(function () {
+    getToken();
+});
 const handleError = message => {
     $("#errorMessage").text(message);
     $("#errorMessageContainer").animate({ width: 'toggle' }, 350);
