@@ -1,26 +1,26 @@
 const models = require('../models');
 const Account = models.Account;
 
-const loginPage = (req,res) =>{
-    res.render('login', {csrfToken: req.csrfToken()});
+const loginPage = (req, res) => {
+  res.render('login', { csrfToken: req.csrfToken() });
 };
 
-const chatPage = (req,res) =>{
-    res.render('chat', {username: req.session.account.username});
-}
+const chatPage = (req, res) => {
+  res.render('chat', { username: req.session.account.username });
+};
 
-const accountPage = (req, res) =>{
-    res.render('account', {username: req.session.account.username});
-}
+const accountPage = (req, res) => {
+  res.render('account', { username: req.session.account.username });
+};
 
-const error = (req,res) =>{
-    res.render('404page');
-}
+const error = (req, res) => {
+  res.render('404page');
+};
 
-const logout = (req,res) =>{
-    req.session.destroy();
-    res.redirect('/');
-}
+const logout = (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+};
 
 const login = (request, response) => {
   const req = request;
@@ -41,53 +41,53 @@ const login = (request, response) => {
   });
 };
 
-const signup = (request, response) =>{
-    const req = request;
-    const res = response;
+const signup = (request, response) => {
+  const req = request;
+  const res = response;
 
-    req.body.username = `${req.body.username}`;
-    req.body.pass = `${req.body.pass}`;
-    req.body.pass2 = `${req.body.pass2}`;
+  req.body.username = `${req.body.username}`;
+  req.body.pass = `${req.body.pass}`;
+  req.body.pass2 = `${req.body.pass2}`;
 
-    if(!req.body.username || !req.body.pass || !req.body.pass2){
-        return res.status(400).json({error: 'All fields are required'});
-    }
+  if (!req.body.username || !req.body.pass || !req.body.pass2) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
 
-    if(req.body.pass !== req.body.pass2){
-        return res.status(400).json({error: 'Passwords do not match'});
-    }
+  if (req.body.pass !== req.body.pass2) {
+    return res.status(400).json({ error: 'Passwords do not match' });
+  }
 
-    return Account.AccountModel.generateHash(req.body.pass, (salt, hash) =>{
-        const accounData = {
-            username: req.body.username,
-            salt,
-            password: hash,
-        };
-        const newAccount = new Account.AccountModel(accounData);
+  return Account.AccountModel.generateHash(req.body.pass, (salt, hash) => {
+    const accounData = {
+      username: req.body.username,
+      salt,
+      password: hash,
+    };
+    const newAccount = new Account.AccountModel(accounData);
 
-        const savePromise = newAccount.save();
+    const savePromise = newAccount.save();
 
-        savePromise.then(() => {
-            req.session.account = Account.AccountModel.toAPI(newAccount);
-            return res.json({redirect: '/chat'});
-        });
-
-        savePromise.catch((err) =>{
-            console.log(err);
-
-            if(err.code === 11000){
-                return res.status(400).json({error: 'Username already in use.'});
-            }
-            return res.status(400).json({error: 'An error occurred'});
-        })
+    savePromise.then(() => {
+      req.session.account = Account.AccountModel.toAPI(newAccount);
+      return res.json({ redirect: '/chat' });
     });
+
+    savePromise.catch((err) => {
+      console.log(err);
+
+      if (err.code === 11000) {
+        return res.status(400).json({ error: 'Username already in use.' });
+      }
+      return res.status(400).json({ error: 'An error occurred' });
+    });
+  });
 };
 
 const passwordChange = (request, response) => {
   const req = request;
   const res = response;
 
- 
+
   const currentPassword = req.body.currPass;
   const newPass = req.body.newPass;
   const newPass2 = req.body.newPass2;
@@ -116,17 +116,17 @@ const passwordChange = (request, response) => {
         });
       });
     }
-  ); 
+  );
 };
 
-const getToken = (request, response) =>{
-    const req = request;
-    const res = response;
+const getToken = (request, response) => {
+  const req = request;
+  const res = response;
 
-    const csrfJSON = {
-        csrfToken: req.csrfToken(),
-    };
-    res.json(csrfJSON);
+  const csrfJSON = {
+    csrfToken: req.csrfToken(),
+  };
+  res.json(csrfJSON);
 };
 
 module.exports.loginPage = loginPage;
