@@ -9,6 +9,10 @@ const chatPage = (req,res) =>{
     res.render('chat', {username: req.session.account.username});
 }
 
+const accountPage = (req, res) =>{
+    res.render('account', {username: req.session.account.username});
+}
+
 const error = (req,res) =>{
     res.render('404page');
 }
@@ -81,23 +85,38 @@ const signup = (request, response) =>{
 
 const passwordChange = (request, response) => {
     const req = request;
-    const res = response;
+  const res = response;
 
-    req.body.oldPass = `${req.body.oldPass}`;
-    req.body.newPass = `${req.body.newPass}`;
-    req.body.newPass2 = `${req.body.newPass2}`;
+ 
+  const currentPassword = req.body.currPass;
+  const newPass = req.body.newPass;
+  const newPass2 = req.body.newPass2;
 
-    if(!req.body.oldPass || !req.body.newPass || !req.body.newPass2){
-        return res.status(400).json({error: 'All fields are required'});
+  if (!currentPass || !newPass || !newPass2) {
+    return res.status(400).json({ error: 'Please Fill In All Fields' });
+  }
+
+  return Account.AccountModel.authenticate(req.session.account.username, currentPassword,
+    (err, pass) => {
+      if (err || !pass) {
+        return res.status(401).json({ error: 'The current password is incorrect' });
+      }
+
+      return Account.AccountModel.generateHash(newPass, (salt, hash) => {
+        const searchUser = {
+          username: req.session.account.username,
+        };
+
+        Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, {}, (error) => {
+          if (error) {
+            return res.status(500).json({ error: 'The password cannot be updated' });
+          }
+
+          return res.status(200).json({ redirect: '/account' });
+        });
+      });
     }
-
-    if(req.body.newPass !== req.body.newPass2){
-        return res.status(400).json({error: 'Passwords do not match'});
-    }
-
-    return Account.AccountModel.generateHash(req.body.newPass, (salt, hash) =>{
-        
-    });
+  ); 
 };
 
 const getToken = (request, response) =>{
@@ -118,3 +137,4 @@ module.exports.signup = signup;
 module.exports.chatPage = chatPage;
 module.exports.errorPage = error;
 module.exports.passChange = passwordChange;
+module.exports.account = accountPage;

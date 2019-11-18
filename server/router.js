@@ -9,7 +9,8 @@ const router = (app) =>{
     app.get('/logout',  mid.requiresLogin, controllers.Account.logout);
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
     app.get('/chat', mid.requiresSecure, controllers.Account.chatPage);
-    //app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
+    app.get('/account', mid.requiresSecure, controllers.Account.account);
+    app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
 }
 
 module.exports = router;
