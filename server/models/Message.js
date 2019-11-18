@@ -9,20 +9,19 @@ mongoose.Promise = global.Promise;
 
 const MessageSchema = new mongoose.Schema({
     message: String,
-    owner: {
-        type: mongoose.Schema.ObjectId,
-        required: true,
-        ref: 'Account',
-    },
-    created: {type: Date , default: Date.now}
+    createdData:{
+        type: Date,
+        default: Date.now,
+    }
 });
 
 //let chatLog = mongoose.model('Message', MessageSchema);
 
 
 
-MessageSchema.toAPI = (doc) =>({
+MessageSchema.statics.toAPI = (doc) =>({
     message: doc.message,
+    
 });
 
 MessageModel = mongoose.model('Message', MessageSchema);
