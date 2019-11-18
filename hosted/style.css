@@ -139,11 +139,12 @@ nav:nth-child(1) {
 .usernameStyle{
     font-weight: bold; 
     font-size: 1.3em;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .messageContentStyle{
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .messageStyle{
@@ -151,7 +152,7 @@ nav:nth-child(1) {
     font-size: 1em;
     margin: 5px;
     padding: 5px 0 10px 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-bottom: 2px solid #3D314A;
 }
 
