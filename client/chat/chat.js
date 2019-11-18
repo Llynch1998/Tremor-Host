@@ -32,6 +32,12 @@ const chat= () => {
         let people = $('#users');
         people.append(`<li id="people">${data[i]}</li>`);
     }
+  });
+  
+  socket.on('leaving', (empty) =>{
+    console.log('left');
+    socket.emit('left', name);
+    $('#users').html("");
   })
 }
 

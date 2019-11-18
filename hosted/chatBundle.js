@@ -33,6 +33,12 @@ const chat = () => {
       people.append(`<li id="people">${data[i]}</li>`);
     }
   });
+
+  socket.on('leaving', empty => {
+    console.log('left');
+    socket.emit('left', name);
+    $('#users').html("");
+  });
 };
 
 const ChatForm = props => {
