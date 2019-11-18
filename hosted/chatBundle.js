@@ -9,7 +9,7 @@ const handleText = e => {
 };
 
 const chat = () => {
-  socket.on('chat message', (msg, username) => {
+  socket.on('chat message', msg => {
     let messages = $('#messages');
     let messageDiv = $('<div class="messageStyle"></div>');
     let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
@@ -19,6 +19,18 @@ const chat = () => {
     messages.append($('<li>').append(messageDiv));
     $('#messages').scrollTop = $('#messages').scrollHeight - $('#messages').clientHeight;
     //window.scrollTo(0,$('#messages').scrollHeight);
+  });
+
+  socket.on('joined', name => {
+    let people = $('#peopleInChat');
+    people.append(`<li>${name}</li>`);
+  });
+  socket.on('userAdded', data => {
+
+    for (let i = 0; i < data.length; i++) {
+      let people = $('#users');
+      people.append(`<li id="people">${data[i]}</li>`);
+    }
   });
 };
 
@@ -49,6 +61,7 @@ const getToken = () => {
 $(document).ready(function () {
   chat();
   getToken();
+  socket.emit('joined', $("#username").val());
 });
 const handleError = message => {
     $("#errorMessage").text(message);

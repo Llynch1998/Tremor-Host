@@ -17,6 +17,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
 
+let currentUsers = [];
+
 mongoose.connect(dbURL, (err) =>{
     if(err){
         console.log("Could not connect to database");
@@ -88,6 +90,15 @@ io.on('connection', (socket) => {
     });
   });
   
+  io.on('connection', (socket) => {
+    socket.on('joined', (name) => {
+      
+      currentUsers.push(name);
+      console.log(currentUsers);
+      io.sockets.emit('userAdded', currentUsers);
+      
+    });
+  });
 
 http.listen(port, (err) => {
     if (err) {
