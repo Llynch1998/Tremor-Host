@@ -9,7 +9,7 @@ const handleText = (e) =>{
 }
 
 const chat= () => {
-  socket.on ('chat message', (msg) => {
+  socket.on ('chat message', (msg, username) => {
     let messages = $('#messages');
     let messageDiv = $('<div class="messageStyle"></div>');
     let userDiv = $(`<p class="usernameStyle">${$('#username').val()}</p>`);
@@ -22,8 +22,8 @@ const chat= () => {
   });
   
   socket.on('joined', (name) =>{
-    let people = $('#peopleInChat');
-    people.append(`<li>${name}</li>`);
+    console.log('we in like flin');
+    socket.name = name;
   });
   socket.on('userAdded', (data) =>{
 

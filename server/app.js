@@ -78,8 +78,10 @@ app.use(function(req, res){
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-    socket.on('disconnect', () => {
+    socket.on('disconnect', (data) => {
       console.log('user disconnected');
+      currentUsers.splice(currentUsers.indexOf(socket.name), 1);
+      io.sockets.emit('userAdded', currentUsers);
     });
   });
   
