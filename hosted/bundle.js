@@ -33,8 +33,9 @@ const AccountInfo = props => {
         { id: "accountInfo" },
         React.createElement(
             "label",
-            { htmlFor: "username" },
-            "Username: "
+            { htmlFor: "username", id: "usernameLabel" },
+            "Username: ",
+            props.username
         ),
         React.createElement(
             "label",
@@ -47,7 +48,7 @@ const AccountInfo = props => {
 };
 
 const setup = function (csrf) {
-    ReactDOM.render(React.createElement(AccountInfo, { csrf: csrf }), document.querySelector('#account'));
+    ReactDOM.render(React.createElement(AccountInfo, { csrf: csrf, username: document.querySelector('#username').value }), document.querySelector('#account'));
 };
 
 const getToken = () => {

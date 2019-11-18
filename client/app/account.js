@@ -30,7 +30,7 @@
 const AccountInfo = (props) => {
     return (
         <div id="accountInfo">
-            <label htmlFor="username">Username: </label>
+<label htmlFor="username" id="usernameLabel">Username: {props.username}</label>
             <label htmlFor="password">Password: </label>
             <input type="hidden" name="_csrf" value={props.csrf}/>
             <input id="changePasswordButton" type="submit" value="Change Password" />
@@ -40,7 +40,7 @@ const AccountInfo = (props) => {
 
 const setup = function(csrf){
     ReactDOM.render(
-        <AccountInfo csrf={csrf}/>, document.querySelector('#account')
+        <AccountInfo csrf={csrf} username={document.querySelector('#username').value}/>, document.querySelector('#account')
     );
         
 };
@@ -53,4 +53,6 @@ const getToken = () => {
 
 $(document).ready(function() {
     getToken();
+
+    
 });
