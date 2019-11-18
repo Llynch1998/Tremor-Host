@@ -18,8 +18,8 @@ const chat = () => {
     messageDiv.append(messageContent);
     messages.append($('<li>').append(messageDiv));
     //$('#messages').scrollTop = $('#messages').scrollHeight;
-    //messages.scrollTop = messages.scrollHeight;
-    window.scrollTo(0, $('#messages').scrollHeight, 20000);
+    messages[0].scrollTop = messages[0].scrollHeight;
+    //window.scrollTo(0,$('#messages').scrollHeight, 20000);
   });
 
   socket.on('userAdded', data => {
