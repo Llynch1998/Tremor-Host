@@ -7,13 +7,13 @@ const handlePasswordChange = (e) => {
 const ChangePasswordWindow = (props) => {
     return(
         <form id="changePasswordForm" name="changePasswordForm"
-            onSubmit={handleSignup}
-            action="/passwordChange"
+            onSubmit={handlePasswordChange}
+            action="/passChange"
             method="POST"
             className="mainForm"
         >
-            <label htmlFor="oldPassword">Old Password</label>
-            <input id="oldPass" type="text" name="oldPassword" placeholder="current password"/>
+            <label htmlFor="currPass">Current Password</label>
+            <input id="currPass" type="text" name="currPass" placeholder="current password"/>
             <label htmlFor="newPass">Password</label>
             <input id="newPass" type="password" name="newPass" placeholder="password"/>
             <label htmlFor="newPass2">Password</label>
@@ -29,22 +29,19 @@ const ChangePasswordWindow = (props) => {
 const createChangePasswordWindow = (csrf) => {
     ReactDOM.render(
         <ChangePasswordWindow csrf={csrf} />,
-        document.querySelector("#account")
+        document.querySelector("#content")
     );
 }
 
 const AccountInfo = (props) => {
     return (
-        <form id="accountInfo" name="accountInfo"
-            onSumit={handlePasswordChange}
-            action="/passChange"
-            method="POST"
-        >
+        <div id="accountInfo" name="accountInfo">
             <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
             <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input id="changePasswordButton" type="submit" value="Change Password" />
-        </form>
+            
+            <a id="changePasswordButton" href="/passChange">Change Password</a>
+        </div>
     );
 };
 
@@ -59,7 +56,7 @@ const setup = function(csrf){
         e.preventDefault();
         createChangePasswordWindow(csrf);
         return false;
-    })
+    });
         
 };
 
@@ -71,6 +68,4 @@ const getToken = () => {
 
 $(document).ready(function() {
     getToken();
-
-    
 });

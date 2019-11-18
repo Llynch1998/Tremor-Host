@@ -84,7 +84,7 @@ const signup = (request, response) =>{
 };
 
 const passwordChange = (request, response) => {
-    const req = request;
+  const req = request;
   const res = response;
 
  
@@ -92,7 +92,7 @@ const passwordChange = (request, response) => {
   const newPass = req.body.newPass;
   const newPass2 = req.body.newPass2;
 
-  if (!currentPass || !newPass || !newPass2) {
+  if (!currentPassword || !newPass || !newPass2) {
     return res.status(400).json({ error: 'Please Fill In All Fields' });
   }
 

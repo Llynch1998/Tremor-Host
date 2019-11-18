@@ -311,6 +311,19 @@ form {
     color: #1EC302;
     border: none;
     font-size: 1em;
+    text-decoration: none;
+}
+
+#changePasswordButton a, #changePasswordButton a:link, #changePasswordButton a:visited, #changePasswordButton a:hover, #changePasswordButton a:active {
+    color: #1EC302;
+    text-decoration: none;
+    background-color: #5C3968;
+    transition: background-color 0.4s ease;
+}
+
+#changePasswordButton a:hover {
+    transition: background-color 0.8s ease;
+    background-color: #5C3968;
 }
 
 #accountInfo{

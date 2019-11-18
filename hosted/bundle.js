@@ -8,17 +8,17 @@ const ChangePasswordWindow = props => {
     return React.createElement(
         "form",
         { id: "changePasswordForm", name: "changePasswordForm",
-            onSubmit: handleSignup,
-            action: "/passwordChange",
+            onSubmit: handlePasswordChange,
+            action: "/passChange",
             method: "POST",
             className: "mainForm"
         },
         React.createElement(
             "label",
-            { htmlFor: "oldPassword" },
-            "Old Password"
+            { htmlFor: "currPass" },
+            "Current Password"
         ),
-        React.createElement("input", { id: "oldPass", type: "text", name: "oldPassword", placeholder: "current password" }),
+        React.createElement("input", { id: "currPass", type: "text", name: "currPass", placeholder: "current password" }),
         React.createElement(
             "label",
             { htmlFor: "newPass" },
@@ -42,12 +42,8 @@ const createChangePasswordWindow = csrf => {
 
 const AccountInfo = props => {
     return React.createElement(
-        "form",
-        { id: "accountInfo", name: "accountInfo",
-            onSumit: handlePasswordChange,
-            action: "/passChange",
-            method: "POST"
-        },
+        "div",
+        { id: "accountInfo", name: "accountInfo" },
         React.createElement(
             "p",
             { id: "usernameLabel" },
@@ -70,7 +66,11 @@ const AccountInfo = props => {
             " "
         ),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
+        React.createElement(
+            "a",
+            { id: "changePasswordButton", href: "/passChange" },
+            "Change Password"
+        )
     );
 };
 
