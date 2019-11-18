@@ -37,7 +37,7 @@ const AccountInfo = (props) => {
     return (
         <form id="accountInfo" name="accountInfo"
             onSumit={handlePasswordChange}
-            action="/passwordChange"
+            action="/passChange"
             method="POST"
         >
             <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
@@ -49,9 +49,17 @@ const AccountInfo = (props) => {
 };
 
 const setup = function(csrf){
+    const changePasswordButton = document.querySelector("#changePasswordButton"); 
+
     ReactDOM.render(
-        <AccountInfo csrf={csrf} username={document.querySelector('#username').value}/>, document.querySelector('#account')
+        <AccountInfo csrf={csrf} username={document.querySelector('#username').value}/>, document.querySelector('#content')
     );
+
+    changePasswordButton.addEventListener("click", e => {
+        e.preventDefault();
+        createChangePasswordWindow(csrf);
+        return false;
+    })
         
 };
 
