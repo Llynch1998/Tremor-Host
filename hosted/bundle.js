@@ -1,3 +1,9 @@
+const handlePasswordChange = e => {
+    e.preventDefault();
+
+    return false;
+};
+
 // const ChangePasswordWindow = (props) => {
 //     return(
 //         <form id="changePasswordForm" name="changePasswordForm"
@@ -29,8 +35,12 @@
 
 const AccountInfo = props => {
     return React.createElement(
-        "div",
-        { id: "accountInfo" },
+        "form",
+        { id: "accountInfo", name: "accountInfo",
+            onSumit: handlePasswordChange,
+            action: "/passwordChange",
+            method: "POST"
+        },
         React.createElement(
             "p",
             { id: "usernameLabel" },
@@ -43,17 +53,17 @@ const AccountInfo = props => {
             props.username
         ),
         React.createElement(
-            "p",
-            { id: "passwordLabel" },
+            "label",
+            { htmlFor: "changePasswordButton", id: "passwordLabel" },
             React.createElement(
                 "strong",
                 null,
                 "Password:"
             ),
-            " ",
-            React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
+            " "
         ),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf })
+        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { id: "changePasswordButton", type: "submit", value: "Change Password" })
     );
 };
 
