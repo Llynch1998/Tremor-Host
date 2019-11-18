@@ -39,7 +39,7 @@ const AccountInfo = (props) => {
 };
 
 const setup = function(csrf){
-    ReactDom.render(
+    ReactDOM.render(
         <AccountInfo csrf={csrf}/>, document.querySelector('#account')
     );
         

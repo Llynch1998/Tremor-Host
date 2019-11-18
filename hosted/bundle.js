@@ -47,7 +47,7 @@ const AccountInfo = props => {
 };
 
 const setup = function (csrf) {
-    ReactDom.render(React.createElement(AccountInfo, { csrf: csrf }), document.querySelector('#account'));
+    ReactDOM.render(React.createElement(AccountInfo, { csrf: csrf }), document.querySelector('#account'));
 };
 
 const getToken = () => {
