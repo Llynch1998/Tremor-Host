@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 //const _ = require('underscore');
 
 
-//let messageModel = {};
+let messageModel = {};
 
 //const convertId = mongoose.Types.ObjectId;
 
@@ -21,7 +21,6 @@ const MessageSchema = new mongoose.Schema({
 
 MessageSchema.statics.toAPI = (doc) =>({
     message: doc.message,
-    
 });
 
 MessageSchema.statics.returnAll = (callback) =>{
