@@ -48,132 +48,13 @@ const AccountInfo = props => {
 const setup = function (csrf) {
     ReactDom.render(React.createElement(AccountInfo, { csrf: csrf }), document.querySelector('#account'));
 };
-
-const handleDomo = e => {
-    e.preventDefault();
-    $("#domoMessage").animate({ width: 'hide' }, 350);
-
-    if ($("#domoName").val() == '' || $("#domoAge").val == '') {
-        handleError("RAWR! All fields are required");
-        return false;
-    }
-
-    sendAjax('POST', $("#domoForm").attr("action"), $("#domoForm").serialize(), function () {
-        loadDomosFromServer();
-    });
-    return false;
-};
-
-const DomoForm = props => {
-    return React.createElement(
-        "form",
-        { id: "domoForm", name: "domoForm",
-            onSubmit: handleDomo,
-            action: "/maker",
-            method: "POST",
-            className: "domoForm"
-        },
-        React.createElement(
-            "label",
-            { htmlFor: "name" },
-            "Name: "
-        ),
-        React.createElement("input", { id: "domoName", type: "text", name: "name", placeholder: "Domo Name" }),
-        React.createElement(
-            "label",
-            { htmlFor: "age" },
-            "Age: "
-        ),
-        React.createElement("input", { id: "domoAge", type: "text", name: "age", placeholder: "Domo Age" }),
-        React.createElement(
-            "label",
-            { htmlFor: "domoPower" },
-            "Power : "
-        ),
-        React.createElement("input", { id: "domoPower", type: "text", name: "powerLevel", placeholder: "Domo Power" }),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Make Domo" })
-    );
-};
-
-const DomoList = function (props) {
-    if (props.domos.length === 0) {
-        return React.createElement(
-            "div",
-            { className: "domoList" },
-            React.createElement(
-                "h3",
-                { className: "emptyDomo" },
-                "No Domos Yet"
-            )
-        );
-    }
-
-    const domoNodes = props.domos.map(function (domo) {
-        return React.createElement(
-            "div",
-            { key: domo._id, className: "domo" },
-            React.createElement("img", { src: "/assets/img/domoface.jpeg", alt: "domo face", className: "domoFace" }),
-            React.createElement(
-                "h3",
-                { className: "domoName" },
-                " Name: ",
-                domo.name,
-                " "
-            ),
-            React.createElement(
-                "h3",
-                { className: "domoAge" },
-                " Age: ",
-                domo.age,
-                " "
-            ),
-            React.createElement(
-                "h3",
-                { className: "domoAge" },
-                " Power: ",
-                domo.powerLevel,
-                " "
-            )
-        );
-    });
-
-    return React.createElement(
-        "div",
-        { className: "domoList" },
-        domoNodes,
-        " "
-    );
-};
-
-const loadDomosFromServer = () => {
-    sendAjax('GET', '/getDomos', null, data => {
-        ReactDOM.render(React.createElement(DomoList, { domos: data.domos }), document.querySelector("#domos"));
-    });
-};
-
-const setup = function (csrf) {
-    ReactDOM.render(React.createElement(DomoForm, { csrf: csrf }), document.querySelector("#makeDomo"));
-    ReactDOM.render(React.createElement(DomoList, { domos: [] }), document.querySelector("#domos"));
-    loadDomosFromServer();
-};
-
-const getToken = () => {
-    sendAjax('GET', '/getToken', null, result => {
-        setup(result.csrfToken);
-    });
-};
-
-$(document).ready(function () {
-    getToken();
-});
 const handleError = message => {
     $("#errorMessage").text(message);
-    $("#domoMessage").animate({ width: 'toggle' }, 350);
+    $("#errorMessageContainer").animate({ width: 'toggle' }, 350);
 };
 
 const redirect = response => {
-    $("#domoMessage").animate({ width: 'hide' }, 350);
+    $("#errorMessageContainer").animate({ width: 'hide' }, 350);
     window.location = response.redirect;
 };
 
