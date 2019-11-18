@@ -310,7 +310,6 @@ form {
     background: #5C3968;
     color: #1EC302;
     border: none;
-    height: 5%;
     font-size: 1em;
 }
 
@@ -324,6 +323,8 @@ form {
 }
 
 #usernameLabel, #passwordLabel {
-    margin: 30px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     font-size: 1.2em;
 }

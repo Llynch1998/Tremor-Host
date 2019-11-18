@@ -1,3 +1,9 @@
+const handlePasswordChange = (e) => {
+    e.preventDefault();
+
+    return false;
+}
+
 // const ChangePasswordWindow = (props) => {
 //     return(
 //         <form id="changePasswordForm" name="changePasswordForm"
@@ -29,11 +35,16 @@
 
 const AccountInfo = (props) => {
     return (
-        <div id="accountInfo">
+        <form id="accountInfo" name="accountInfo"
+            onSumit={handlePasswordChange}
+            action="/passwordChange"
+            method="POST"
+        >
             <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
-            <p id="passwordLabel"><strong>Password:</strong> <input id="changePasswordButton" type="submit" value="Change Password" /></p>
+            <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
             <input type="hidden" name="_csrf" value={props.csrf}/>
-        </div>
+            <input id="changePasswordButton" type="submit" value="Change Password" />
+        </form>
     );
 };
 
