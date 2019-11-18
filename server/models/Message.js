@@ -13,7 +13,8 @@ const MessageSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required: true,
         ref: 'Account',
-    }
+    },
+    created: {type: Date , default: Date.now}
 });
 
 //let chatLog = mongoose.model('Message', MessageSchema);
