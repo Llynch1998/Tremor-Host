@@ -12,7 +12,7 @@ const router = (app) =>{
     app.post('/maker', mid.requiresLogin, controllers.Domo.make);
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
     app.get('/chat', mid.requiresSecure, controllers.Account.chatPage);
-    app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
+    //app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
 }
 
 module.exports = router;
