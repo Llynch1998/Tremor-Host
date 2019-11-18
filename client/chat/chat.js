@@ -23,6 +23,7 @@ const chat= () => {
   
   socket.on('joined', (name) =>{
     console.log('we in like flin');
+    socket.name = name;
   });
   socket.on('userAdded', (data) =>{
 
