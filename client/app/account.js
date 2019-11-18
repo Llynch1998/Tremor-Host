@@ -30,10 +30,9 @@
 const AccountInfo = (props) => {
     return (
         <div id="accountInfo">
-<label htmlFor="username" id="usernameLabel">Username: {props.username}</label>
-            <label htmlFor="password">Password: </label>
+            <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
+            <p id="passwordLabel"><strong>Password:</strong> <input id="changePasswordButton" type="submit" value="Change Password" /></p>
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input id="changePasswordButton" type="submit" value="Change Password" />
         </div>
     );
 };
