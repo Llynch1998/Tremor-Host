@@ -1,5 +1,5 @@
 -account page where user can change account information // --2--
--users currently in lobby displayed next to chat // --1--
+-users currently in lobby displayed next to chat // --1-- NO LONGER IN BUILD
 -change password page // --3--
 -make look really pretty \\
 -remove all domo references \\ DONE
