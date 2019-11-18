@@ -222,15 +222,14 @@ form {
     background: #4B4B4B;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 #logoContainer{
-    margin-left: 171px;
+    margin: 0 auto;
     padding-top: 30px;
     padding-bottom: 30px;
     display: flex;
-    justify-content: center;
 }
 
 #loginLogo{
