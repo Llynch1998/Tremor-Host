@@ -1,6 +1,20 @@
 const handlePasswordChange = (e) => {
     e.preventDefault();
 
+    $("#errorMessageContainer").animate({width:'hide'},350);
+
+    if($("#currPass").val() == '' || $("#newPass").val() == '' || $("#newPass2").val() == ''){
+        handleError("All fields are required");
+        return false;
+    }
+
+    if($("#newPass").val() !== $("#newPass2").val()){
+        handleError("Passwords do not match");
+        return false;
+    }
+
+    sendAjax('POST', $("#changePasswordForm").attr("action"), $("#changePasswordForm").serialize(), redirect);
+
     return false;
 }
 
@@ -19,7 +33,7 @@ const ChangePasswordWindow = (props) => {
             <label htmlFor="newPass2">Password</label>
             <input id="newPass2" type="password" name="newPass2" placeholder="retype password"/>
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input className="formSubmit" type="submit" value="Change Password" />
+            <input id="changePassBtn" type="submit" value="Change Password" />
 
         </form>
 
@@ -35,13 +49,14 @@ const createChangePasswordWindow = (csrf) => {
 
 const AccountInfo = (props) => {
     return (
-        <div id="accountInfo" name="accountInfo">
+        <form id="accountInfo" name="accountInfo"
+        onSubmit={createChangePasswordWindow}>
             <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
             <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
             <input type="hidden" name="_csrf" value={props.csrf}/>
             
-            <a id="changePasswordButton" href="/passChange">Change Password</a>
-        </div>
+            <input type="submit" id="changePasswordButton" value="Change Password"/>
+        </form>
     );
 };
 

@@ -1,6 +1,20 @@
 const handlePasswordChange = e => {
     e.preventDefault();
 
+    $("#errorMessageContainer").animate({ width: 'hide' }, 350);
+
+    if ($("#currPass").val() == '' || $("#newPass").val() == '' || $("#newPass2").val() == '') {
+        handleError("All fields are required");
+        return false;
+    }
+
+    if ($("#newPass").val() !== $("#newPass2").val()) {
+        handleError("Passwords do not match");
+        return false;
+    }
+
+    sendAjax('POST', $("#changePasswordForm").attr("action"), $("#changePasswordForm").serialize(), redirect);
+
     return false;
 };
 
@@ -42,8 +56,9 @@ const createChangePasswordWindow = csrf => {
 
 const AccountInfo = props => {
     return React.createElement(
-        "div",
-        { id: "accountInfo", name: "accountInfo" },
+        "form",
+        { id: "accountInfo", name: "accountInfo",
+            onSubmit: createChangePasswordWindow },
         React.createElement(
             "p",
             { id: "usernameLabel" },
@@ -66,11 +81,7 @@ const AccountInfo = props => {
             " "
         ),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement(
-            "a",
-            { id: "changePasswordButton", href: "/passChange" },
-            "Change Password"
-        )
+        React.createElement("input", { type: "submit", id: "changePasswordButton", value: "Change Password" })
     );
 };
 

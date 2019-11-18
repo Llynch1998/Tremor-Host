@@ -281,7 +281,7 @@ form {
     background-color: #4F2C5B;
 }
 
-#user, #pass, #pass2, #oldPass, #newPass, #newPass2 {
+#user, #pass, #pass2, #currPass, #newPass, #newPass2 {
     text-align: center;
     font-size: 1.1em;
     width: 180px;
@@ -290,7 +290,7 @@ form {
     margin: 0 auto;
 }
 
-#user:focus, #pass:focus, #pass2:focus, #oldPass:focus, #newPass:focus, #newPass2:focus {
+#user:focus, #pass:focus, #pass2:focus, #currPass:focus, #newPass:focus, #newPass2:focus {
     outline: none;
     box-shadow: 0px 0px 1px 1px #55acee;
 }
@@ -340,4 +340,29 @@ form {
     margin-left: 30px;
     margin-bottom: 30px;
     font-size: 1.2em;
+}
+
+#changePassBtn {
+    transition: background-color 0.4s ease;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 1.2em;
+    background-color: #5C3968;
+    border-radius: 2px;
+    border-color: #5C3968;
+    padding: 3px 0px;
+    color: #1EC302;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+#changePassBtn:link, #changePassBtn:visited, #changePassBtn:hover, #changePassBtn:active {
+    color: #1EC302;
+}
+
+#changePassBtn:hover {
+    transition: background-color 0.4s ease;
+    background-color: #4F2C5B;
 }
