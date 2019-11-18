@@ -17,7 +17,8 @@ const chat= () => {
     messageDiv.append(userDiv);
     messageDiv.append(messageContent)
     messages.append($('<li>').append(messageDiv));
-    window.scrollTo(0,document.body.scrollHeight);
+    $('#messages').scrollTop = $('#messages').scrollHeight - $('#messages').clientHeight;
+    //window.scrollTo(0,$('#messages').scrollHeight);
   });
 }
 

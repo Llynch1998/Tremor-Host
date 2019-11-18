@@ -150,7 +150,7 @@ nav:nth-child(1) {
     color: #D6D6D6;
     font-size: 1em;
     margin: 5px;
-    padding-bottom: 5px;
+    padding: 5px 0 10px 5px;
     margin-bottom: 10px;
     border-bottom: 2px solid #3D314A;
 }
@@ -221,12 +221,16 @@ form {
     height: 50%;
     background: #4B4B4B;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 #logoContainer{
     margin-left: 171px;
     padding-top: 30px;
     padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 #loginLogo{
