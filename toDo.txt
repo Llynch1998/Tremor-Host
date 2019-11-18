@@ -4,3 +4,5 @@
 -make look really pretty
 -remove all domo references
 -documentation
+-save chat logs to db
+-load chat logs from db

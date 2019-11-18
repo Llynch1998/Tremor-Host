@@ -13,10 +13,6 @@ const error = (req,res) =>{
     res.render('404page');
 }
 
-const accountPage = (req, res) => {
-    res.render('account');
-}
-
 const logout = (req,res) =>{
     req.session.destroy();
     res.redirect('/');
@@ -122,4 +118,3 @@ module.exports.signup = signup;
 module.exports.chatPage = chatPage;
 module.exports.errorPage = error;
 module.exports.passChange = passwordChange;
-module.exports.account = accountPage;
