@@ -214,6 +214,88 @@ form {
     margin-left: 80px;
 }
 
+/* Login Page */
+
+#loginContainer{
+    width: 40%;
+    height: 50%;
+    background: #4B4B4B;
+    margin: 0 auto;
+}
+
+#logoContainer{
+    margin-left: 171px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#loginLogo{
+    width: 100px;
+    height: 100px;
+}
+
+.mainForm {
+    margin: 0 auto;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainForm h3 {
+    text-align: center;
+}
+
+.mainForm label {
+    width: 100px;
+    font-size: 1.2em;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.formSubmit {
+    transition: background-color 0.4s ease;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 1.2em;
+    width: 100px;
+    background-color: #5C3968;
+    border-radius: 2px;
+    border-color: #5C3968;
+    padding: 3px 0px;
+    color: #1EC302;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
+    color: #1EC302;
+}
+
+.formSubmit:hover {
+    transition: background-color 0.4s ease;
+    background-color: #4F2C5B;
+}
+
+#user, #pass, #pass2 {
+    text-align: center;
+    font-size: 1.1em;
+    width: 180px;
+    border-radius: 6px;
+    background-color: #A0A0A0;
+    margin: 0 auto;
+}
+
+#user:focus, #pass:focus, #pass2:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 1px #55acee;
+}
+
+/* Sign Up Page */
+/* Change Password Page */
+/* Account Information Page */
+
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
@@ -257,62 +339,7 @@ form {
     background-color: #338acc;
 }
 
-.mainForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
-}
 
-.mainForm h3 {
-    text-align: center;
-}
-
-.mainForm label {
-    display: inline-block;
-    width: 100px;
-    margin-right: 10px;
-    text-align: right;
-    font-size: 1.2em;
-}
-
-.formSubmit {
-    transition: background-color 0.4s ease;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 14px;
-    font-size: 1.2em;
-    width: 100px;
-    background-color: #55acee;
-    border-radius: 2px;
-    border-color: #66acee;
-    padding: 3px 0px;
-    color: white;
-    text-decoration: none;
-}
-
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
-}
-
-.formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #338acc;
-}
-
-#user, #pass, #pass2 {
-    text-align: center;
-    font-size: 1.1em;
-    width: 180px;
-    border-radius: 6px;
-}
-
-#user:focus, #pass:focus, #pass2:focus {
-    outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
-}
 
 #domoMessage {
     display:none;
