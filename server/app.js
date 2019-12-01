@@ -81,10 +81,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
-  socket.on('disconnect', (name) => {
-    currentUsers.splice(currentUsers.indexOf(name), 1);
-    io.emit('userAdded', currentUsers);
-  });
 });
 
 io.on('connection', (socket) => {
@@ -96,9 +92,17 @@ io.on('connection', (socket) => {
 
 io.on('connection', (socket) => {
   socket.on('joined', (name) => {
-    currentUsers.push(name);
+    console.log(name);
+    socket.nickname = name;
+    currentUsers.push(socket.nickname);
     console.log(currentUsers);
     io.sockets.emit('userAdded', currentUsers);
+  });
+  socket.on('disconnect', (name) => {
+    console.log(socket.nickname);
+    console.log(currentUsers.indexOf(socket.nickname));
+    currentUsers.splice(currentUsers.indexOf(socket.nickname), 1);
+    io.emit('userAdded', currentUsers);
   });
 });
 
