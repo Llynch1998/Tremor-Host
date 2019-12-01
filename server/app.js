@@ -81,7 +81,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
-  socket.on('left', (name) => {
+  socket.on('disconnect', (name) => {
     currentUsers.splice(currentUsers.indexOf(name), 1);
     io.emit('userAdded', currentUsers);
   });

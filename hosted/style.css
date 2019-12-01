@@ -115,11 +115,11 @@ nav:nth-child(1) {
 #peopleInChat{
     overflow-y: auto;
     background: #121212;
-    width: 0%;
+    width: 15%;
 }
 
 #messageContainer{
-    width: 100%;
+    width: 85%;
     background: #4B4B4B;
     display: flex;
     flex-direction: column;
