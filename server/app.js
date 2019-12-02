@@ -93,8 +93,7 @@ io.on('connection', (socket) => {
 io.on('connection', (socket) => {
   socket.on('joined', (name) => {
     console.log(name);
-    var nick = name;
-    socket.nickname = nick;
+    socket.nickname = name;
     currentUsers.push(socket.nickname);
     console.log(currentUsers);
     io.sockets.emit('userAdded', currentUsers);
