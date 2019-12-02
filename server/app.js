@@ -93,12 +93,13 @@ io.on('connection', (socket) => {
 io.on('connection', (socket) => {
   socket.on('joined', (name) => {
     console.log(name);
-    socket.nickname = name;
+    var nick = name;
+    socket.nickname = nick;
     currentUsers.push(socket.nickname);
     console.log(currentUsers);
     io.sockets.emit('userAdded', currentUsers);
   });
-  socket.on('disconnect', (name) => {
+  socket.on('disconnect', () => {
     console.log(socket.nickname);
     console.log(currentUsers.indexOf(socket.nickname));
     currentUsers.splice(currentUsers.indexOf(socket.nickname), 1);
