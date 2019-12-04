@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
 io.on('connection', (socket) => {
   socket.on('joined', (name) => {
     console.log(name);
-    // eslint-disable-next-line new-cap
+    // eslint-disable-next-line no-param-reassign
     socket.nickname = name;
     currentUsers.push(socket.nickname);
     console.log(currentUsers);
