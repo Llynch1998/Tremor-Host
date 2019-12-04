@@ -19,7 +19,15 @@ const error = (req, res) => {
 
 const logout = (req, res) => {
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/login');
+};
+
+const main = (req, res) => {
+  res.render('main');
+};
+
+const downloadPage = (req, res) => {
+  res.render('download');
 };
 
 const login = (request, response) => {
@@ -138,3 +146,5 @@ module.exports.chatPage = chatPage;
 module.exports.errorPage = error;
 module.exports.passChange = passwordChange;
 module.exports.account = accountPage;
+module.exports.main = main;
+module.exports.downloadPage = downloadPage;

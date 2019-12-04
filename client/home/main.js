@@ -12,7 +12,7 @@ const mainPage = () => {
 }
 
 const setup = function() {
-    ReactDOM.render(<downloadPage/>, document.querySelector("#content"));
+    ReactDOM.render(<mainPage/>, document.querySelector("#content"));
 };
 
 const getToken = () => {
@@ -22,5 +22,5 @@ const getToken = () => {
 };
 
 $(document).ready(function() {
-    getToken();
+    setup();
 });

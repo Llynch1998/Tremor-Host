@@ -7,13 +7,13 @@ const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
-  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/', mid.requiresSecure, controllers.Account.main);
   app.get('/chat', mid.requiresSecure, controllers.Account.chatPage);
   app.get('/account', mid.requiresSecure, controllers.Account.account);
   app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
   app.get('/getMessages', mid.requiresLogin, controllers.Message.loadMessages);
   app.post('/saveMessage', mid.requiresLogin, controllers.Message.saveMessage);
-  app.post('/download', mid.requiresSecure);
+  app.post('/download', mid.requiresSecure, controllers.Account.downloadPage);
 };
 
 module.exports = router;
