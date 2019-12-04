@@ -1,4 +1,4 @@
-const mainPage = () => {
+const mainPage = props => {
     return React.createElement(
         "div",
         { id: "mainContent" },
@@ -11,22 +11,23 @@ const mainPage = () => {
             "p",
             { id: "tremorDescription" },
             "Tremor is a real-time chat application developed by Matthew Paseltiner and Wyatt Lynch as a class project. It uses socket.io, MongoDB, RedisLabs, Heroku, and Electron to create a seamless experience. Users can create an account and join for free. There is a public chat for anyone that wants to join but you can also create private groups with your friends."
-        )
+        ),
+        React.createElement("input", { id: "csrftoken", type: "hidden", name: "_csrf", value: props.csrf })
     );
 };
 
-const setup = function () {
-    ReactDOM.render(React.createElement("mainPage", null), document.querySelector("#content"));
+const setup = function (csrf) {
+    ReactDOM.render(React.createElement("mainPage", { csrf: csrf }), document.querySelector("#content"));
 };
 
 const getToken = () => {
-    sendAjax('GET', '/getToken', null, () => {
-        setup();
+    sendAjax('GET', '/getToken', null, result => {
+        setup(result.csrftoken);
     });
 };
 
 $(document).ready(function () {
-    setup();
+    getToken();
 });
 const handleError = message => {
     $("#errorMessage").text(message);
