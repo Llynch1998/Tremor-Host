@@ -1,6 +1,6 @@
 -setup router with the main page and downloads page //for Matthew
 -css for main page and downloads page //for Matthew
--fix chat window (send bar covers most recent message) //for Matthew
+-fix chat window (send bar covers most recent message) //for Matthew -done
 -make Mac build of Electron App
 -password changing //for Wyatt
 -private messaging //for Wyatt
