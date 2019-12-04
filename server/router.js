@@ -13,6 +13,7 @@ const router = (app) => {
   app.post('/passChange', mid.requiresSecure, controllers.Account.passChange);
   app.get('/getMessages', mid.requiresLogin, controllers.Message.loadMessages);
   app.post('/saveMessage', mid.requiresLogin, controllers.Message.saveMessage);
+  app.post('/download', mid.requiresSecure);
 };
 
 module.exports = router;

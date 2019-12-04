@@ -1,8 +1,7 @@
--account page where user can change account information // --2-- DONE
--users currently in lobby displayed next to chat // --1-- NO LONGER IN BUILD
--change password page // --3--
--make look really pretty \\ DONE
--remove all domo references \\ DONE
--documentation \\ DONE
--save chat logs to db // --1-- DONE
--load chat logs from db // --1--
+-setup router with the main page and downloads page //for Matthew
+-css for main page and downloads page //for Matthew
+-fix chat window (send bar covers most recent message) //for Matthew
+-make Mac build of Electron App
+-password changing //for Wyatt
+-private messaging //for Wyatt
+-rooms //for Wyatt
