@@ -23,7 +23,7 @@ const logout = (req, res) => {
 };
 
 const main = (req, res) => {
-  res.render('main');
+  res.render('main', { csrfToken: req.csrfToken() });
 };
 
 const downloadPage = (req, res) => {
