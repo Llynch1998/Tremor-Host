@@ -5,3 +5,4 @@
 -password changing //for Wyatt
 -private messaging //for Wyatt
 -rooms //for Wyatt
+-documentation 

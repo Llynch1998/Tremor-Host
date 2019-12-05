@@ -366,3 +366,65 @@ form {
     transition: background-color 0.4s ease;
     background-color: #4F2C5B;
 }
+
+/* Home Page */
+#tremorInfo{
+    width: 50vw;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+#tremorTitle{
+    color: #5C3968;
+    font-size: 8em;
+    padding-left: 80px;
+}
+
+#tremorDescription{
+    color: #5C3968;
+    font-size: 2em;
+    margin-left: 80px;
+    padding-top: 20px;
+}
+
+/* Download Page */
+#downloads{
+    width: 50vw;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+#downloadTitle{
+    color: #5C3968;
+    font-size: 6em;
+    padding-left: 80px;
+}
+
+#downloadInfo{
+    color: #5C3968;
+    font-size: 1.2em;
+    margin-left: 80px;
+    padding-top: 20px;
+}
+
+#downloadLinks{
+    padding-top: 100px;
+    padding-left: 80px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#downloadLinks a, #downloadLinks a:link, #downloadLinks a:visited, #downloadLinks a:hover, #downloadLinks a:active{
+    color: #1EC302;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 50px;
+    background-color: #5C3968;
+    transition: background-color 0.4s ease;
+}
+
+#downloadLinks a:hover {
+    transition: background-color 0.8s ease;
+    background-color: #4D2C56;
+}
