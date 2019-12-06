@@ -104,7 +104,15 @@ const passwordChange = (request, response) => {
     return res.status(400).json({ error: 'Please Fill In All Fields' });
   }
 
-  return Account.AccountModel.authenticate(req.session.account.username, currentPassword,
+  if(req.body.newPass !== req.body.newPass2){
+    return res.status(400).json({error: 'Yah passwords do not match'});
+  }
+
+  if(req.body.currentPassword === req.body.newPass){
+    return res.status(400).json({error: 'Your New password cannot be your old password'});
+  };
+
+  return Account.AccountModel.authenticate(`${req.session.account.username}`, currentPassword,
     (err, pass) => {
       if (err || !pass) {
         return res.status(401).json({ error: 'The current password is incorrect' });
@@ -115,7 +123,7 @@ const passwordChange = (request, response) => {
           username: req.session.account.username,
         };
 
-        Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, {}, () => {
+        Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, (error) => {
           if (error) {
             return res.status(500).json({ error: 'The password cannot be updated' });
           }

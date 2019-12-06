@@ -1,3 +1,5 @@
+let csrfToken;
+
 const handlePasswordChange = e => {
     e.preventDefault();
 
@@ -8,12 +10,18 @@ const handlePasswordChange = e => {
         return false;
     }
 
+    if ($("#currPass").val() === $("#newPass").val()) {
+        handleError("New Password Required");
+    };
+
     if ($("#newPass").val() !== $("#newPass2").val()) {
         handleError("Passwords do not match");
         return false;
     }
 
-    sendAjax('POST', $("#changePasswordForm").attr("action"), $("#changePasswordForm").serialize(), redirect);
+    sendAjax('POST', '/passChange', $("#changePasswordForm").serialize(), () => {
+        handleError("You've Changed Your Password");
+    });
 
     return false;
 };
@@ -45,7 +53,7 @@ const ChangePasswordWindow = props => {
             "Password"
         ),
         React.createElement("input", { id: "newPass2", type: "password", name: "newPass2", placeholder: "retype password" }),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { type: "hidden", name: "_csrf", value: csrfToken }),
         React.createElement("input", { id: "changePassBtn", type: "submit", value: "Change Password" })
     );
 };
@@ -80,26 +88,20 @@ const AccountInfo = props => {
             ),
             " "
         ),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { type: "hidden", name: "_csrf", value: csrfToken }),
         React.createElement("input", { type: "submit", id: "changePasswordButton", value: "Change Password" })
     );
 };
 
 const setup = function (csrf) {
-    const changePasswordButton = document.querySelector("#changePasswordButton");
 
     ReactDOM.render(React.createElement(AccountInfo, { csrf: csrf, username: document.querySelector('#username').value }), document.querySelector('#content'));
-
-    changePasswordButton.addEventListener("click", e => {
-        e.preventDefault();
-        createChangePasswordWindow(csrf);
-        return false;
-    });
 };
 
 const getToken = () => {
     sendAjax('GET', '/getToken', null, result => {
         setup(result.csrfToken);
+        csrfToken = result.csrfToken;
     });
 };
 
