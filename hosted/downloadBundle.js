@@ -1,4 +1,4 @@
-const downloadPage = () => {
+const DownloadPage = () => {
     return React.createElement(
         "div",
         { id: "downloads" },
@@ -30,7 +30,7 @@ const downloadPage = () => {
 };
 
 const setup = function () {
-    ReactDOM.render(React.createElement("downloadPage", null), document.querySelector("#content"));
+    ReactDOM.render(React.createElement(DownloadPage, null), document.querySelector("#content"));
 };
 
 const getToken = () => {

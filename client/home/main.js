@@ -1,4 +1,4 @@
-const mainPage = (props) => {
+const MainPage = (props) => {
     return(
         <div id="mainContent">
             <h2 id="tremorTitle">Tremor</h2>
@@ -13,7 +13,7 @@ const mainPage = (props) => {
 }
 
 const setup = function(csrf) {
-    ReactDOM.render(<mainPage csrf={csrf} />, document.querySelector("#content"));
+    ReactDOM.render(<MainPage csrf={csrf} />, document.querySelector("#content"));
 };
 
 const getToken = () => {

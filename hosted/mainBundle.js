@@ -1,4 +1,4 @@
-const mainPage = props => {
+const MainPage = props => {
     return React.createElement(
         "div",
         { id: "mainContent" },
@@ -17,7 +17,7 @@ const mainPage = props => {
 };
 
 const setup = function (csrf) {
-    ReactDOM.render(React.createElement("mainPage", { csrf: csrf }), document.querySelector("#content"));
+    ReactDOM.render(React.createElement(MainPage, { csrf: csrf }), document.querySelector("#content"));
 };
 
 const getToken = () => {
