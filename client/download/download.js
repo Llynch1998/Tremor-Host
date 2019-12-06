@@ -1,4 +1,4 @@
-const downloadPage = () => {
+const DownloadPage = () => {
     return(
         <div id="downloads">
             <h2 id="downloadTitle">Download Tremor</h2>
@@ -13,7 +13,7 @@ const downloadPage = () => {
 }
 
 const setup = function() {
-    ReactDOM.render(<downloadPage/>, document.querySelector("#content"));
+    ReactDOM.render(<DownloadPage/>, document.querySelector("#content"));
 };
 
 const getToken = () => {
