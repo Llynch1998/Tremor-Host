@@ -372,35 +372,43 @@ form {
     width: 50vw;
     margin: 0 auto;
     padding-top: 30px;
+    height: 60vh;
+    background: rgb(107, 107, 107);
 }
 
 #tremorTitle{
     color: #5C3968;
     font-size: 8em;
-    padding-left: 80px;
+    padding-left: 60px;
 }
 
 #tremorDescription{
     color: #5C3968;
     font-size: 2em;
-    margin-left: 80px;
+    margin-left: 60px;
     padding-top: 20px;
 }
 
 /* Download Page */
-#downloads{
+#downloadInfo{
+    background: rgb(107, 107, 107);
+    height: 60vh;
     width: 50vw;
     margin: 0 auto;
+}
+
+#downloads{
+    
     padding-top: 30px;
 }
 
 #downloadTitle{
     color: #5C3968;
-    font-size: 6em;
-    padding-left: 80px;
+    font-size: 5em;
+    padding-left: 60px;
 }
 
-#downloadInfo{
+#downloadDescription{
     color: #5C3968;
     font-size: 1.2em;
     margin-left: 80px;
