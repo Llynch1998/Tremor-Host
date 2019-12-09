@@ -64,32 +64,54 @@ const createChangePasswordWindow = csrf => {
 
 const AccountInfo = props => {
     return React.createElement(
-        "form",
-        { id: "accountInfo", name: "accountInfo",
-            onSubmit: createChangePasswordWindow },
+        "div",
+        { id: "holder" },
         React.createElement(
-            "p",
-            { id: "usernameLabel" },
+            "form",
+            { id: "accountInfo", name: "accountInfo",
+                onSubmit: createChangePasswordWindow },
             React.createElement(
-                "strong",
-                null,
-                "Username:"
+                "p",
+                { id: "usernameLabel" },
+                React.createElement(
+                    "strong",
+                    null,
+                    "Username:"
+                ),
+                " ",
+                props.username
             ),
-            " ",
-            props.username
+            React.createElement(
+                "label",
+                { htmlFor: "changePasswordButton", id: "passwordLabel" },
+                React.createElement(
+                    "strong",
+                    null,
+                    "Password:"
+                ),
+                " "
+            ),
+            React.createElement("input", { type: "hidden", name: "_csrf", value: csrfToken }),
+            React.createElement("input", { type: "submit", id: "changePasswordButton", value: "Change Password" })
         ),
         React.createElement(
-            "label",
-            { htmlFor: "changePasswordButton", id: "passwordLabel" },
+            "div",
+            { id: "friends" },
             React.createElement(
-                "strong",
-                null,
-                "Password:"
+                "p",
+                { id: "friendsLabel" },
+                React.createElement(
+                    "strong",
+                    null,
+                    "Friends:"
+                )
             ),
-            " "
-        ),
-        React.createElement("input", { type: "hidden", name: "_csrf", value: csrfToken }),
-        React.createElement("input", { type: "submit", id: "changePasswordButton", value: "Change Password" })
+            React.createElement(
+                "ul",
+                { id: "friendsList" },
+                props.friends
+            )
+        )
     );
 };
 

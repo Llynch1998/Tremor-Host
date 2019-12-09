@@ -58,14 +58,21 @@ const createChangePasswordWindow = (csrf) => {
 
 const AccountInfo = (props) => {
     return (
-        <form id="accountInfo" name="accountInfo"
-        onSubmit={createChangePasswordWindow}>
-            <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
-            <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
-            <input type="hidden" name="_csrf" value={csrfToken}/>
-            
-            <input type="submit" id="changePasswordButton" value="Change Password"/>
-        </form>
+        <div id="holder">
+            <form id="accountInfo" name="accountInfo"
+            onSubmit={createChangePasswordWindow}>
+                <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
+                <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
+                <input type="hidden" name="_csrf" value={csrfToken}/>
+                
+                <input type="submit" id="changePasswordButton" value="Change Password"/>
+            </form>
+            <div id="friends">
+                <p id="friendsLabel"><strong>Friends:</strong></p>
+                <ul id="friendsList">{props.friends}</ul>
+            </div>
+        </div>
+        
     );
 };
 
