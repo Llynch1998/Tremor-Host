@@ -331,11 +331,30 @@ form {
     color: black;
 }
 
+#holder{
+    font-size: 1.3em;
+    color: black;
+}
+
 #accountInfoShrink{
     width: 100%;
 }
 
-#usernameLabel, #passwordLabel {
+#friends{
+    overflow-y: auto;
+    flex-direction: row;
+}
+
+#friendsList{
+    background: #4B4B4B;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+#usernameLabel, #passwordLabel, #friendsLabel {
     margin-top: 30px;
     margin-left: 30px;
     margin-bottom: 30px;
