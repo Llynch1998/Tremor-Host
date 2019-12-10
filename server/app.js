@@ -107,6 +107,14 @@ io.on('connection', (socket) => {
   });
 });
 
+io.sockets.on('connection', (socket) =>{
+  socket.on('create', (users)=> {
+    users.sort;
+    socket.join(users[0] + users[1]);
+    socket.emit('joined room', users[0] + users[1]);
+  });
+});
+
 http.listen(port, (err) => {
   if (err) {
     throw err;

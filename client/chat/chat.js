@@ -1,8 +1,15 @@
 const socket = io();
-
+const inRoom = false;
+let currentRoom;
 const handleText = (e) =>{
   e.preventDefault(); // prevents page reloading
-  socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
+  if(inRoom){
+    socket.to('currentRoom').emit('chat message', $('#username').val() + " : " + $('#m').val());
+  }
+  else{
+    socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
+  }
+  
   $('#m').val('');
 
 
@@ -29,7 +36,7 @@ const chat= () => {
     people.empty();
     for(let i = 0; i < data.length; i++){
        
-        people.append(`<li id="people">${data[i]}</li>`);
+        people.append(`<li id="people" onClick="CreateRoom()">${data[i]}</li>`);
     }
   });
   
@@ -67,6 +74,17 @@ const getToken = () => {
       setup(result.csrfToken);
   });
 };
+
+const CreateRoom = (e) =>{
+  let username = $('#username').val()
+  let target = e.target.value;
+  let users = [username, target];
+  inRoom = true;
+  socket.emit('create', users);
+  socket.on('joined room', (data) =>{
+    currentRoom = data;
+  });
+}
 
 $(document).ready(function() {
   chat();
