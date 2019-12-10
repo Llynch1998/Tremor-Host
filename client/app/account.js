@@ -1,3 +1,5 @@
+
+
 let csrfToken;
 
 
@@ -56,21 +58,40 @@ const createChangePasswordWindow = (csrf) => {
     );
 }
 
+const addFriend = () =>{
+    sendAjax('POST', '/addFriend', $("#addFriend").serialize(), function(){
+        loadFriends();
+    });
+}
+
+const loadFriends = () =>{
+    sendAjax('GET', '/getFriends', null, (data) =>{
+        ReactDOM.render(
+            <AccountInfo friends={data.friends} />, document.querySelector("#friends")
+        );
+    });
+};
+
 const AccountInfo = (props) => {
     return (
         <div id="holder">
             <form id="accountInfo" name="accountInfo"
-            onSubmit={createChangePasswordWindow}>
+            onSubmit={addFriend}>
                 <p id="usernameLabel"><strong>Username:</strong> {props.username}</p>
                 <label htmlFor="changePasswordButton" id="passwordLabel"><strong>Password:</strong> </label>
                 <input type="hidden" name="_csrf" value={csrfToken}/>
                 
                 <input type="submit" id="changePasswordButton" value="Change Password"/>
             </form>
-            <div id="friends">
+            <form id="addFriend" name="addFriend" onSubmit={addFriend}>
+                <label htmlFor="username">Username: </label>
+                <input id="userName" type="text" name="usernam" placeholder="Account Name"/>
+                <input type="submit" value="Add User" />
+            </form>
+            <section id="friends">
                 <p id="friendsLabel"><strong>Friends:</strong></p>
                 <ul id="friendsList">{props.friends}</ul>
-            </div>
+            </section>
         </div>
         
     );

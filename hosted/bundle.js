@@ -1,3 +1,5 @@
+
+
 let csrfToken;
 
 const handlePasswordChange = e => {
@@ -62,6 +64,18 @@ const createChangePasswordWindow = csrf => {
     ReactDOM.render(React.createElement(ChangePasswordWindow, { csrf: csrf }), document.querySelector("#content"));
 };
 
+const addFriend = () => {
+    sendAjax('POST', '/addFriend', $("#addFriend").serialize(), function () {
+        loadFriends();
+    });
+};
+
+const loadFriends = () => {
+    sendAjax('GET', '/getFriends', null, data => {
+        ReactDOM.render(React.createElement(AccountInfo, { friends: data.friends }), document.querySelector("#friends"));
+    });
+};
+
 const AccountInfo = props => {
     return React.createElement(
         "div",
@@ -69,7 +83,7 @@ const AccountInfo = props => {
         React.createElement(
             "form",
             { id: "accountInfo", name: "accountInfo",
-                onSubmit: createChangePasswordWindow },
+                onSubmit: addFriend },
             React.createElement(
                 "p",
                 { id: "usernameLabel" },
@@ -95,7 +109,18 @@ const AccountInfo = props => {
             React.createElement("input", { type: "submit", id: "changePasswordButton", value: "Change Password" })
         ),
         React.createElement(
-            "div",
+            "form",
+            { id: "addFriend", name: "addFriend", onSubmit: addFriend },
+            React.createElement(
+                "label",
+                { htmlFor: "username" },
+                "Username: "
+            ),
+            React.createElement("input", { id: "userName", type: "text", name: "usernam", placeholder: "Account Name" }),
+            React.createElement("input", { type: "submit", value: "Add User" })
+        ),
+        React.createElement(
+            "section",
             { id: "friends" },
             React.createElement(
                 "p",

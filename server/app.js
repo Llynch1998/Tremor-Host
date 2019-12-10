@@ -85,7 +85,13 @@ io.on('connection', (socket) => {
 
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    if(msg.room != null){
+      io.in(msg.room).emit('chat message', msg.message)
+    }
+    else{
+      io.emit('chat message', msg.message);
+    }
+    
     console.log(`message: ${msg}`);
   });
 });
@@ -104,6 +110,14 @@ io.on('connection', (socket) => {
     console.log(currentUsers.indexOf(socket.nickname));
     currentUsers.splice(currentUsers.indexOf(socket.nickname), 1);
     io.emit('userAdded', currentUsers);
+  });
+});
+
+io.sockets.on('connection', (socket) =>{
+  socket.on('create', (users)=> {
+    users = users.sort();
+    socket.join(users[0] + users[1]);
+    socket.emit('joined room', users[0] + users[1]);
   });
 });
 

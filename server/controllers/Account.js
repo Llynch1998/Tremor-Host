@@ -145,6 +145,13 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+const findUser = (request, response) =>{
+  const req = request;
+  const res = response;
+
+  Account.AccountModel.findByUsername(req.name)
+}
+
 module.exports.loginPage = loginPage;
 module.exports.login = login;
 module.exports.logout = logout;
@@ -156,3 +163,4 @@ module.exports.passChange = passwordChange;
 module.exports.account = accountPage;
 module.exports.main = main;
 module.exports.downloadPage = downloadPage;
+module.exports.findUser = findUser;

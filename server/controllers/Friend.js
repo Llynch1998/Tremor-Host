@@ -18,7 +18,7 @@ const addFriend = (req, res) =>{
     }
 
     const friendData = {
-        name = req.body.name,
+        name: req.body.name,
         owner:req.session.account._id,
     };
 

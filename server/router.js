@@ -15,6 +15,7 @@ const router = (app) => {
   app.post('/saveMessage', mid.requiresLogin, controllers.Message.saveMessage);
   app.get('/download', mid.requiresSecure, controllers.Account.downloadPage);
   app.get('/getFriends', mid.requiresSecure, mid.requiresLogin, controllers.Friend.getFriends);
+  
 };
 
 module.exports = router;
