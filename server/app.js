@@ -85,7 +85,13 @@ io.on('connection', (socket) => {
 
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    if(msg.room != null){
+      io.in(msg.room).emit('chat message', msg.message)
+    }
+    else{
+      io.emit('chat message', msg.message);
+    }
+    
     console.log(`message: ${msg}`);
   });
 });

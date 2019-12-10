@@ -4,10 +4,11 @@ let currentRoom;
 const handleText = (e) =>{
   e.preventDefault(); // prevents page reloading
   if(inRoom){
-    socket.in(currentRoom).emit('chat message', $('#username').val() + " : " + $('#m').val());
+    console.log(currentRoom + " " + $('#username').val() + " : " + $('#m').val());
+    socket.emit('chat message', {message: $('#username').val() + " : " + $('#m').val(), room: currentRoom});
   }
   else{
-    socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
+    socket.emit('chat message', {message: $('#username').val() + " : " + $('#m').val(), room: null});
   }
   
   $('#m').val('');
