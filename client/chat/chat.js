@@ -1,5 +1,5 @@
 const socket = io();
-const inRoom = false;
+let inRoom = false;
 let currentRoom;
 const handleText = (e) =>{
   e.preventDefault(); // prevents page reloading
