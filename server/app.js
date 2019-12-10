@@ -115,9 +115,9 @@ io.on('connection', (socket) => {
 
 io.sockets.on('connection', (socket) =>{
   socket.on('create', (users)=> {
-    users = users.sort();
-    socket.join(users[0] + users[1]);
-    socket.emit('joined room', users[0] + users[1]);
+    let roomUsers = users.sort(); 
+    socket.join(roomUsers[0] + roomUsers[1]);
+    socket.emit('joined room', roomUsers[0] + roomUsers[1]);
   });
 });
 
