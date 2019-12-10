@@ -36,7 +36,7 @@ const chat= () => {
     people.empty();
     for(let i = 0; i < data.length; i++){
        
-        people.append(`<li id="people" onClick={CreateRoom}>${data[i]}</li>`);
+        people.append(`<li id="people" onClick={CreateRoom(this.innerHTML)}>${data[i]}</li>`);
     }
   });
   
