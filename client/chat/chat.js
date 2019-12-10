@@ -84,6 +84,7 @@ const CreateRoom = (e) =>{
   socket.on('joined room', (data) =>{
     currentRoom = data;
   });
+  console.log(currentRoom);
 }
 
 $(document).ready(function() {
