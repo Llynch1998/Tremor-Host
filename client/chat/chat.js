@@ -4,7 +4,7 @@ let currentRoom;
 const handleText = (e) =>{
   e.preventDefault(); // prevents page reloading
   if(inRoom){
-    io.in(currentRoom).emit('chat message', $('#username').val() + " : " + $('#m').val());
+    io.sockets.in(currentRoom).emit('chat message', $('#username').val() + " : " + $('#m').val());
   }
   else{
     socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
