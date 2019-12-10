@@ -4,7 +4,7 @@ let currentRoom;
 const handleText = (e) =>{
   e.preventDefault(); // prevents page reloading
   if(inRoom){
-    socket.to(currentRoom).emit('chat message', $('#username').val() + " : " + $('#m').val());
+    io.in(currentRoom).emit('chat message', $('#username').val() + " : " + $('#m').val());
   }
   else{
     socket.emit('chat message', $('#username').val() + " : " + $('#m').val());
@@ -83,8 +83,9 @@ const CreateRoom = (val) =>{
   socket.emit('create', users);
   socket.on('joined room', (data) =>{
     currentRoom = data;
+    console.log(currentRoom);
   });
-  console.log(currentRoom);
+  
 }
 
 $(document).ready(function() {
