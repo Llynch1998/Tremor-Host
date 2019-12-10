@@ -1,4 +1,4 @@
-models = require('../models');
+const models = require('../models');
 
 const Friend = models.Friend;
 
@@ -14,6 +14,7 @@ const friendPage = (req,res) =>{
 
 const addFriend = (req, res) =>{
     if(!req.body.username){
+        // eslint-disable-next-line max-len
         return res.status(400).json({error: "Name isn't included!"});//just in case no name gets passed through
     }
 
@@ -38,7 +39,7 @@ const addFriend = (req, res) =>{
     return friendPromise;
 };
 
-getFriends = (request, response) =>{
+const getFriends = (request, response) =>{
     const req = request;
     const res = response;
 
