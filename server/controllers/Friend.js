@@ -13,12 +13,12 @@ const friendPage = (req,res) =>{
 }
 
 const addFriend = (req, res) =>{
-    if(!req.body.name){
+    if(!req.body.username){
         return res.status(400).json({error: "Name isn't included!"});//just in case no name gets passed through
     }
 
     const friendData = {
-        name: req.body.name,
+        name: req.body.username,
         owner:req.session.account._id,
     };
 

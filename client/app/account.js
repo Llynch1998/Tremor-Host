@@ -84,13 +84,13 @@ const AccountInfo = (props) => {
                 <input type="submit" id="changePasswordButton" value="Change Password"/>
             </form>
             <form id="addFriend" name="addFriend" onSubmit={addFriend}>
-                <label htmlFor="username">Username: </label>
-                <input id="userName" type="text" name="usernam" placeholder="Account Name"/>
+                <label htmlFor="username">Friend Name: </label>
+                <input id="userName" type="text" name="username" placeholder="Account Name"/>
                 <input type="submit" value="Add User" />
             </form>
             <section id="friends">
                 <p id="friendsLabel"><strong>Friends:</strong></p>
-                <ul id="friendsList">{props.friends}</ul>
+                
             </section>
         </div>
         
