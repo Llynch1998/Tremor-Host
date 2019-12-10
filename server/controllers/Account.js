@@ -123,7 +123,7 @@ const passwordChange = (request, response) => {
           username: req.session.account.username,
         };
         //is saying error is defined error in upper scope?
-        // eslint-disable-next-line error-type
+        // eslint-disable-next-line no-shadow
         Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, (error) => {
           if (error) {
             return res.status(500).json({ error: 'The password cannot be updated' });
