@@ -77,7 +77,7 @@ const getToken = () => {
 
 const CreateRoom = (e) =>{
   let username = $('#username').val()
-  let target = e.target.value;
+  let target = e.target.innerHTML;
   let users = [username, target];
   inRoom = true;
   socket.emit('create', users);
