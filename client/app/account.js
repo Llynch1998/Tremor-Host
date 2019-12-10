@@ -108,7 +108,13 @@ const AccountInfo = (props) => {
                 
                 <input type="submit" id="changePasswordButton" value="Change Password"/>
             </form>
-            <form id="addFriend" name="addFriend" onSubmit={addFriend}>
+            
+            
+        </div>
+        
+    );
+    //this is what would've been that funky friend list stuff --Wyatt
+    /*<form id="addFriend" name="addFriend" onSubmit={addFriend}>
                 <label htmlFor="username">Friend Name: </label>
                 <input id="username" type="text" name="username" placeholder="Account Name"/>
                 <input type="submit" value="Add User" />
@@ -116,10 +122,7 @@ const AccountInfo = (props) => {
             <section id="friends">
                 <p id="friendsLabel"><strong>Friends:</strong></p>
                 
-            </section>
-        </div>
-        
-    );
+            </section> */
 };
 
 const setup = function(csrf){
