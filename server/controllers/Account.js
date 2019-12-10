@@ -156,7 +156,7 @@ const findUser = (request, response) =>{
         return res.status(400).json({error: 'An error ocurred'});
     }
     return res.json({username: docs});
-  }
+  })
   
 }
 
