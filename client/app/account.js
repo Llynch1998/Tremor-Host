@@ -67,10 +67,35 @@ const addFriend = () =>{
 const loadFriends = () =>{
     sendAjax('GET', '/getFriends', null, (data) =>{
         ReactDOM.render(
-            <AccountInfo friends={data.friends} />, document.querySelector("#friends")
+            <FriendList friends={data.friends} />, document.querySelector("#friends")
         );
     });
 };
+
+const FriendList = function(props) {
+    if(props.friends.length === 0){
+        return(
+            <div className="FriendList">
+                <h3 className="noFriends">0 Friends</h3>
+            </div>
+        );
+    }
+
+    
+    const friendNodes= props.domos.map(function(friend){
+        return(
+            <div key={friend._id} className="friend">
+                <h3 className="username">{friend.name} </h3>
+            </div>
+
+        );
+    });
+
+    return (
+        <div className="FriendList">{friendNodes} </div>
+    )
+};
+
 
 const AccountInfo = (props) => {
     return (
