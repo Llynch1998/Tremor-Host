@@ -122,7 +122,8 @@ const passwordChange = (request, response) => {
         const searchUser = {
           username: req.session.account.username,
         };
-
+        //is saying error is defined error in upper scope?
+        // eslint-disable-next-line error-type
         Account.AccountModel.update(searchUser, { $set: { password: hash, salt } }, (error) => {
           if (error) {
             return res.status(500).json({ error: 'The password cannot be updated' });
@@ -149,7 +150,14 @@ const findUser = (request, response) =>{
   const req = request;
   const res = response;
 
-  Account.AccountModel.findByUsername(req.name)
+  return Account.AccountModel.findByUsername(req.name, (err,docs) =>{
+    if(err) { 
+        console.log(err);
+        return res.status(400).json({error: 'An error ocurred'});
+    }
+    return res.json({username: docs});
+  }
+  
 }
 
 module.exports.loginPage = loginPage;
