@@ -7,6 +7,7 @@ const _ = require('underscore');
 let FriendModel = {};
 
 const convertId = mongoose.Types.ObjectId;
+// eslint-disable-next-line no-unused-vars
 const setName = (name) => _.escape(name).trim();
 
 // const convertId = mongoose.Types.ObjectId;
