@@ -85,7 +85,7 @@ const AccountInfo = (props) => {
             </form>
             <form id="addFriend" name="addFriend" onSubmit={addFriend}>
                 <label htmlFor="username">Friend Name: </label>
-                <input id="userName" type="text" name="username" placeholder="Account Name"/>
+                <input id="username" type="text" name="username" placeholder="Account Name"/>
                 <input type="submit" value="Add User" />
             </form>
             <section id="friends">
